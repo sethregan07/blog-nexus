@@ -30,9 +30,9 @@ cd blog-nexus
 npm install
 ```
 
-3. For development (with Node.js 23+ compatibility):
+3. For development:
 ```bash
-NODE_OPTIONS="--openssl-legacy-provider" npm run dev
+npm run dev
 ```
 
 4. Open [http://localhost:3000](http://localhost:3000) in your browser.
@@ -42,9 +42,10 @@ NODE_OPTIONS="--openssl-legacy-provider" npm run dev
 ### Build for Production
 
 ```bash
-NODE_OPTIONS="--openssl-legacy-provider" npm install --legacy-peer-deps
-NODE_OPTIONS="--openssl-legacy-provider" npm run build
+npm run build
 ```
+
+**Note:** All npm scripts automatically include Node.js compatibility flags for OpenSSL legacy provider support.
 
 ### Start Production Server
 

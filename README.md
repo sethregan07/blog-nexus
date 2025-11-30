@@ -42,6 +42,7 @@ NODE_OPTIONS="--openssl-legacy-provider" npm run dev
 ### Build for Production
 
 ```bash
+NODE_OPTIONS="--openssl-legacy-provider" npm install --legacy-peer-deps
 NODE_OPTIONS="--openssl-legacy-provider" npm run build
 ```
 
@@ -60,9 +61,8 @@ npm start
 
 #### Netlify
 1. Connect your GitHub repository to Netlify
-2. Set build command: `NODE_OPTIONS="--openssl-legacy-provider" npm run build`
-3. Set publish directory: `out` (for static export) or leave as root for serverless
-4. Deploy automatically on every push
+2. Build command is automatically configured via `netlify.toml`
+3. Deploy automatically on every push (uses `--legacy-peer-deps` to resolve dependency conflicts)
 
 #### Manual Deployment
 ```bash

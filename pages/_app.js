@@ -39,9 +39,72 @@ class MyApp extends App {
       pageProps = await Component.getInitialProps(ctx)
     }
 
-    let footer = await request('/menu/footer')
-    let social = await request('/menu/stay-connected')
-    let header = await request('/menu/header')
+    // Static menu data to avoid API dependencies - matching expected structure
+    let footer = {
+      items: [
+        {
+          id: 'news',
+          title: 'News',
+          url: '/category/news',
+          classes: '',
+          children: [
+            { title: 'Campus', url: '/category/campus', classes: '', type: 'category' },
+            { title: 'Sports', url: '/category/sports', classes: '', type: 'category' },
+            { title: 'Opinion', url: '/category/opinion', classes: '', type: 'category' }
+          ]
+        },
+        {
+          id: 'arts',
+          title: 'Arts',
+          url: '/category/arts',
+          classes: '',
+          children: [
+            { title: 'Culture', url: '/category/culture', classes: '', type: 'category' },
+            { title: 'Movies', url: '/category/movies', classes: '', type: 'category' },
+            { title: 'Music', url: '/category/music', classes: '', type: 'category' }
+          ]
+        }
+      ]
+    }
+
+    let social = {
+      items: [
+        { title: 'Facebook', url: '#', classes: 'social-facebook', type: 'custom' },
+        { title: 'Twitter', url: '#', classes: 'social-twitter', type: 'custom' },
+        { title: 'Instagram', url: '#', classes: 'social-instagram', type: 'custom' }
+      ]
+    }
+
+    let header = {
+      items: [
+        {
+          title: 'News',
+          url: '/category/news',
+          type: 'category'
+        },
+        {
+          title: 'Sports',
+          url: '/category/sports',
+          type: 'category'
+        },
+        {
+          title: 'Arts',
+          url: '/category/arts',
+          type: 'category'
+        },
+        {
+          title: 'Opinion',
+          url: '/category/opinion',
+          type: 'category'
+        },
+        {
+          title: 'Donate',
+          url: '/donate',
+          type: 'custom'
+        }
+      ]
+    }
+
     let description = 'The Diamondback is the independent student-run newspaper at the University of Maryland.'
 
     return {
@@ -95,9 +158,6 @@ class MyApp extends App {
           <Advertisement path='300x50_Mobile_Footer' size={[300, 50]} mode='mobile' />
           <Advertisement path='728x90_Banner_E' size={[728, 90]} mode='desktop' />
           <Footer footer={menus.footer} social={menus.social} />
-          <NoSSR>
-            <Sidekick />
-          </NoSSR>
         </DFPSlotsProvider>
       </Container>
     )

@@ -1,5 +1,3 @@
-const withSass = require('@zeit/next-sass')
-const withCss = require('@zeit/next-css')
 const { PHASE_DEVELOPMENT_SERVER, PHASE_PRODUCTION_BUILD } = require('next/constants')
 const useProductionBackend = (process.env.PRODUCTION_BACKEND || '').toLowerCase() === 'true'
 
@@ -25,7 +23,7 @@ module.exports = (phase, { defaultConfig }) => {
     }
   }
 
-  return withCss(withSass({
+  return {
     env,
     webpack: (config) => {
       config.module.rules.push({
@@ -41,5 +39,5 @@ module.exports = (phase, { defaultConfig }) => {
 
       return config
     }
-  }))
+  }
 }

@@ -50,7 +50,6 @@ export default class Header extends React.Component {
         </header>
         <header className='sticky-on-scroll'>
           <Navigation menu={menu} toggleSidebar={this.toggleSidebar} />
-          <Sidebar />
         </header>
       </React.Fragment>
     )

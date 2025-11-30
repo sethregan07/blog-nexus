@@ -1,0 +1,14 @@
+[build]
+  command = "NODE_OPTIONS='--openssl-legacy-provider' npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_OPTIONS = "--openssl-legacy-provider"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+[functions]
+  directory = "netlify/functions"

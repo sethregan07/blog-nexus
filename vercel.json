@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/next"
+    }
+  ],
+  "env": {
+    "NODE_OPTIONS": "--openssl-legacy-provider"
+  },
+  "functions": {
+    "pages/**/*.js": {
+      "runtime": "nodejs18.x"
+    }
+  }
+}
